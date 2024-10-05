@@ -6,12 +6,12 @@ public class SimuladorEcosistema {
         Random random = new Random();
 
         // Inicializar ecosistema
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
+        for (int lector1 = 0; lector1 < 20; lector1++) {
+            for (int lector2 = 0; lector2 < 20; lector2++) {
                 double prob = random.nextDouble();
-                if (prob < 0.1) ecosistema[i][j] = 'A'; // Árbol
-                else if (prob < 0.2) ecosistema[i][j] = 'H'; // Hierba
-                else ecosistema[i][j] = ' '; // Vacío
+                if (prob < 0.1) ecosistema[lector1][lector2] = 'A'; // Árbol
+                else if (prob < 0.2) ecosistema[lector1][lector2] = 'H'; // Hierba
+                else ecosistema[lector1][lector2] = ' '; // Vacío
             }
         }
 
@@ -20,37 +20,37 @@ public class SimuladorEcosistema {
             System.out.println("Día " + dia);
             
             // Mostrar ecosistema
-            for (int i = 0; i < 20; i++) {
-                for (int j = 0; j < 20; j++) {
-                    System.out.print(ecosistema[i][j] + " ");
+            for (int lector3 = 0; lector3 < 20; lector3++) {
+                for (int lector4 = 0; lector4 < 20; lector4++) {
+                    System.out.print(ecosistema[lector3][lector4] + " ");
                 }
                 System.out.println();
             }
 
             // Actualizar ecosistema
             char[][] nuevoEcosistema = new char[20][20];
-            for (int i = 0; i < 20; i++) {
-                for (int j = 0; j < 20; j++) {
+            for (int lector5 = 0; lector5 < 20; lector5++) {
+                for (int lector6 = 0; lector6 < 20; lector6++) {
                     // Contar vecinos (integrado directamente aquí)
                     int vecinos = 0;
-                    for (int di = -1; di <= 1; di++) {
-                        for (int dj = -1; dj <= 1; dj++) {
-                            if (di == 0 && dj == 0) continue;
-                            int ni = (i + di + 20) % 20;
-                            int nj = (j + dj + 20) % 20;
-                            if (ecosistema[ni][nj] == 'A') vecinos++;
+                    for (int relector1 = -1; relector1 <= 1; relector1++) {
+                        for (int relector2 = -1; relector2 <= 1; relector2++) {
+                            if (relector1 == 0 && relector2 == 0) continue;
+                            int vecino1 = (lector5 + relector1 + 20) % 20;
+                            int vecino2 = (lector6 + relector2 + 20) % 20;
+                            if (ecosistema[vecino1][vecino2] == 'A') vecinos++;
                         }
                     }
 
-                    if (ecosistema[i][j] == 'A') {
-                        if (vecinos < 2 || vecinos > 3) nuevoEcosistema[i][j] = 'H';
-                        else nuevoEcosistema[i][j] = 'A';
-                    } else if (ecosistema[i][j] == 'H') {
-                        if (vecinos == 3) nuevoEcosistema[i][j] = 'A';
-                        else nuevoEcosistema[i][j] = 'H';
+                    if (ecosistema[lector5][lector6] == 'A') {
+                        if (vecinos < 2 || vecinos > 3) nuevoEcosistema[lector5][lector6] = 'H';
+                        else nuevoEcosistema[lector5][lector6] = 'A';
+                    } else if (ecosistema[lector5][lector6] == 'H') {
+                        if (vecinos == 3) nuevoEcosistema[lector5][lector6] = 'A';
+                        else nuevoEcosistema[lector5][lector6] = 'H';
                     } else {
-                        if (random.nextDouble() < 0.01) nuevoEcosistema[i][j] = 'H';
-                        else nuevoEcosistema[i][j] = ' ';
+                        if (random.nextDouble() < 0.01) nuevoEcosistema[lector5][lector6] = 'H';
+                        else nuevoEcosistema[lector5][lector6] = ' ';
                     }
                 }
             }
